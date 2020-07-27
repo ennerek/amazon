@@ -1,0 +1,59 @@
+#formulario{
+
+    height: 100vh;
+}
+ 
+.iniciar_sesion{
+    width: 432px;
+    height: 385px;
+    border-radius: 1%;
+    padding: 34px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 85px;
+    border-width: 1px;
+    border-color: rgb(211, 211, 211);
+    border-style: solid;
+    font-family: "Amazon Ember",Arial,sans-serif;
+}
+.logo{
+    height: 59px;
+    width: 135px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin-left: 112px;
+    margin-right: auto;
+    margin-top: -193px;
+}
+.caja_texto{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 0px;
+    border-width: 0px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(145, 145, 145);
+}
+
+.boton_iniciar{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 25px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #f3d17c;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(145, 145, 145);
+
+}
