@@ -1,0 +1,35 @@
+<body style=" background-color: #EAEDED" ;>
+    <nav class="navbar navbar-expand-lg navbar-light" id="barraNavegacion">
+      <a class="navbar-brand logo" href="#"><img src="img/loga.png" class="logo"></a>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+            <!--Categorias-->
+          <select name="todos " id="todos" class="form-control">          
+          </select>
+          <input type="text" id="textoBusqueda" class="form-control">
+          <input type="button" id="boton_busqueda" class="boton_busqueda">
+          <img src="img/lupa.png" class="lupa">
+          <ul class="navbar-nav mr-auto" id="botonesDrop">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <h6 style="color: cornsilk;">Administrar</h6>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Carrito</a>
+                <a class="dropdown-item" href="#">Mis productos</a>
+                <div class="dropdown-divider"></div> 
+                <a class="dropdown-item" href="index.php">Cerrar Sesión</a>               
+              </div>
+              
+            </li>
+          </ul>
+          <select class="col-xl-2 custom-select custom-select-sm" style="height:30px;" name="usuarios" id="susuarios">
+                
+          </select>
+      </div>
+      </form>
+      </div>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

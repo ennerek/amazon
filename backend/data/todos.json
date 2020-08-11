@@ -1,0 +1,93 @@
+[
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Belleza",
+    "nombreProducto": "Shampoo Aloe",
+    "precio": "L. 125",
+    "imagen": "../../amazon/frontend/img/belleza/3.jpg",
+    "descripcion": "Para el cuidado del cabello, anticaspa",
+    "calificacion": 4
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria": "Salud",
+    "nombreProducto": "Listerine",
+    "precio": "L. 50",
+    "imagen": "../../amazon/frontend/img/belleza/5.jpg",
+    "descripcion": "Cuida tu salud",
+    "calificacion": 3
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Computadoras",
+    "nombreProducto": "Computadora HP",
+    "precio": "L. 6,500",
+    "imagen": "../../amazon/frontend/img/computadoras/1.jpg",
+    "descripcion": "2Gb de ram, procesador Intel Core i5",
+    "calificacion": 3
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Computadoras",
+    "nombreProducto": "Procesador AMD Ryzen",
+    "precio": "L. 3,000",
+    "imagen": "../../amazon/frontend/img/computadoras/2.jpg",
+    "descripcion": "De 4 a 6 núcleos, Hasta 12 subprocesos, Hasta 35 MB de GameCache",
+    "calificacion": 4
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Computadoras",
+    "nombreProducto": "Toner HP",
+    "precio": "L. 250",
+    "imagen": "../../amazon/frontend/img/computadoras/3.jpg",
+    "descripcion": "Cartucho HP 65 Original Negro (N9K02AN).",
+    "calificacion": 3
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Computadoras",
+    "nombreProducto": "WD WDBU6Y0020BBK",
+    "precio": "L. 1,507.07",
+    "imagen": "../../amazon/frontend/img/computadoras/5.jpg",
+    "descripcion": " Disco duro externo portátil (2 TB, USB 3.0)",
+    "calificacion": ""
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Hogar",
+    "nombreProducto": "Ventilador",
+    "precio": "L. 200",
+    "imagen": "../../amazon/frontend/img/hogar/5.jpg",
+    "descripcion": "Para tu frescura",
+    "calificacion": ""
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Hogar",
+    "nombreProducto": "Cortina de baño",
+    "precio": "L. 150",
+    "imagen": "../../amazon/frontend/img/hogar/3.jpg",
+    "descripcion": "Envios a Honduras",
+    "calificacion": 5
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Belleza",
+    "nombreProducto": "Maquina corta pelo",
+    "precio": "L 996,99",
+    "imagen": "../../amazon/frontend/img/belleza/6.jpg",
+    "descripcion": "Cortadora multiusos, Empaque original",
+    "calificacion": 4
+  },
+  {
+    "idCategoria": 0,
+    "nombreCategoria":"Belleza",
+    "nombreProducto": "Jabon de Mano",
+    "precio": "L. 135,99",
+    "imagen": "../../amazon/frontend/img/belleza/4.jpg",
+    "descripcion": "Jabón líquido para manos limpias de la señora Meyer",
+    "calificacion": 4
+  }
+  
+]

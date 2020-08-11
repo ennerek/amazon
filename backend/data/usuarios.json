@@ -1,0 +1,37 @@
+[
+  {
+    "idUsuario": 0,
+    "nombre": "Enner",
+    "apellido": "Andino",
+    "correo": "enner.garcia@yahoo.com",
+    "contrasenia": "motagua10"
+  },
+  {
+    "idUsuario": 1,
+    "nombre": "Juan",
+    "apellido": "Pablo",
+    "correo": "juan@gmail.con",
+    "contrasenia": "jj24"
+  },
+  {
+    "idUsuario": 2,
+    "nombre": "Lucas",
+    "apellido": "Jimenez",
+    "correo": "lucas@gmail.com",
+    "contrasenia": "lucas124"
+  },
+  {
+    "idUsuario": 3,
+    "nombre": "Pedro",
+    "apellido": "Alvarez",
+    "correo": "pedro@yahoo.com",
+    "contrasenia": "pedro2020"
+  },
+  {
+    "idUsuario": 10,
+    "nombre": "juan",
+    "apellido": "aguilar",
+    "correo": "juan@gmail.com",
+    "contrasenia": "123456"
+  }
+]
