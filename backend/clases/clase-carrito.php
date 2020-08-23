@@ -1,5 +1,6 @@
 <?php 
-    class Compra{
+    class Carrito{
+        private $idProducto;
         private $idUsuario;
         private $idCategoria;
         private $nombreProducto;
@@ -8,6 +9,7 @@
         private $imagen;
 
         public function __construct(
+                 $idProducto,
             $idUsuario,
             $idCategoria,
             $nombreProducto,
@@ -17,6 +19,7 @@
     
         )
         {
+            $this->idProducto = $idProducto;
             $this->idUsuario = $idUsuario;
             $this->idCategoria= $idCategoria;
             $this->nombreProducto = $nombreProducto;
@@ -145,12 +148,33 @@
 
                 return $this;
         }
+        
+        /**
+         * Get the value of idProducto
+         */ 
+        public function getIdProducto()
+        {
+                return $this->idProducto;
+        }
+
+        /**
+         * Set the value of idProducto
+         *
+         * @return  self
+         */ 
+        public function setIdProducto($idProducto)
+        {
+                $this->idProducto = $idProducto;
+
+                return $this;
+        }
    
 
-    public function anadirCompra() {
-     $contenido = file_get_contents("../data/mis-compras.json");
+    public function anadirCarrito() {
+     $contenido = file_get_contents("../data/carrito.json");
         $compra = json_decode($contenido, true);
         $compra[] = array(
+            "idProducto" => $this->idProducto,
             "idUsuario" => $this->idUsuario,
             "idCategoria" => $this->idCategoria,
             "nombreProducto" => $this->nombreProducto, 
@@ -158,17 +182,18 @@
             "descripcion" => $this->descripcion,
             "imagen" => $this->imagen,
         );
-        $archivo = fopen("../data/mis-compras.json", "w");
+        $archivo = fopen("../data/carrito.json", "w");
         fwrite($archivo, json_encode($compra));
         fclose($archivo);   
     }
 
-    public static function obtenerCompra($idUsuario){
-        $contenidoArchivo = file_get_contents('../data/mis-compras.json');
+    public static function obtenerCarrito($idUsuario){
+        $contenidoArchivo = file_get_contents('../data/carrito.json');
         $compras = json_decode($contenidoArchivo, true);
         $compra = array();
         for ($i=0;$i<sizeof($compras);$i++){
             if($compras[$i]['idUsuario'] == $idUsuario){
+                   $compra[$i]['idProducto'] = $compras[$i]['idProducto'];
                    $compra[$i]['idUsuario'] = $compras[$i]['idUsuario'];
                    $compra[$i]['idCategoria'] =$compras[$i]['idCategoria'];
                    $compra[$i]['nombreProducto'] = $compras[$i]['nombreProducto'];
@@ -179,5 +204,15 @@
         };
         echo json_encode($compra);
     }
+    public static function eliminarArticulo($idProducto){
+        $contenidoArchivo = file_get_contents('../data/carrito.json');
+        $carrito = json_decode($contenidoArchivo,true);
+        array_splice($carrito, $idProducto,1);
+        $archivo = fopen("../data/carrito.json", "w");
+           fwrite($archivo, json_encode($carrito));
+           fclose($archivo);                
+       }
+ 
+
 
     }

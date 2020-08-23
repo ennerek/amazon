@@ -5,22 +5,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="form-inline my-2 my-lg-0">
-        <!--Categorias-->
-        <select name="todos " id="todos" class="form-control">
-        </select>
-        <input type="text" id="textoBusqueda" class="form-control">
-        <input type="button" id="boton_busqueda" class="boton_busqueda">
-        <img src="img/lupa.png" class="lupa">
 
     </div>
-
     </form>
     <button class="btn btn-outline-warning botones"
       style="border-radius: 20px;height: 40px; font-family: Arial, Helvetica, sans-serif; width: 200px; margin-top: -10px;"
       onclick="mostrarModal()">Registrate</button>
-    <a href="index-usuarios.php"><button class="btn btn-outline-warning botones"
+    <button class="btn btn-outline-warning botones"
         style="width: 160px; margin-top: -10px; margin-right: 23px; margin-left: 25px;border-radius: 20px;height: 40px;font-family: Arial, Helvetica, sans-serif;"
-        onclick="obtenerProductos()" type="submit">Iniciar Sesión</button></a>
+        onclick="modalInicioSesion()" type="submit">Iniciar Sesión</button>
     </div>
   </nav>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

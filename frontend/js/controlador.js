@@ -3,30 +3,6 @@ const url1 = '../../amazon/backend/api/usuario.php';
 
 var subMenus = [
    {
-      id: 0,
-      categoria: "Todos",
-      link: "Comprar ahora",
-      urlImg: " ",
-      subCategorias: [
-         {
-            nombre: "Computadoras",
-            img: "img/submenus/computadora.jpeg"
-         },
-         {
-            nombre: "Videojuegos",
-            img: "img/submenus/juegos.jpeg"
-         },
-         {
-            nombre: "Bebes",
-            img: "img/submenus/bebes.jpeg"
-         },
-         {
-            nombre: "Juguetes y Juegos",
-            img: "img/submenus/juguetes.jpeg"
-         }
-      ]
-   },
-   {
       id: 1,
       categoria: "AmazonBasic",
       link: "Ver más",
@@ -99,16 +75,22 @@ function cerrarMenu() {
    var el = document.getElementById('grid');
    el.style.display = (el.style.display == 'none') ? 'block' : 'none';
 }
-//genera los submenus del select
-function todos() {
-   seleccionar.forEach(function (selec, i) {
-      document.getElementById('todos').innerHTML +=
-         `<option id="categoriasSelect" value="'${i}'">${selec.nombre}</option>`
-   });
-
+//Obtiene los usuarios registrados
+function obtenerUsuarios() {
+   axios({
+      method: "GET",
+      url: url1,
+      responseType: "json",
+   })
+      .then((res) => {
+         console.log(res.data);
+         usuarios = res.data;
+      })
+      .catch((error) => {
+         console.error(error);
+      });
 }
-todos();
-
+obtenerUsuarios();
 //genera categorias principales
 function generarCategorias() {
 
@@ -118,8 +100,7 @@ function generarCategorias() {
        <div class="card-body">
         <h5 class="card-title">${menu.categoria}</h5>
         <img src=${menu.urlImg} class="card-img-top" alt="">
-        <p class="card-text"><a href="">${menu.link}</a></p>
-      </div>
+         </div>
     </div>  `
 
    });
@@ -127,33 +108,11 @@ function generarCategorias() {
 generarCategorias();
 //Muestra el modal de registro
 function mostrarModal() {
+   $("#mensaje").modal("hide");
    $("#modalRegistro").modal("show");
 }
-
-//Obtiene archivos del la data de los usuarios
-function obtenerUsuarios() {
-   axios({
-      method: 'GET',
-      url: url1,
-      responseType: 'json'
-   }).then(res => {
-      console.log(res.data);
-      usuarios = res.data;
-      for (let i = 0; i < res.data.length; i++) {
-         document.getElementById('susuarios').innerHTML +=
-            `<option value="${res.data[i].idUsuario}">${res.data[i].nombre}</option>`;
-      }
-      //document.getElementById('susuario').value = null;
-   }).catch(error => {
-      console.error(error);
-   });
-
-}
-
-obtenerUsuarios();
-
-//Guarda el registro de un usuario
-function guardar() {
+//Resgitra un usuario
+function guardarUsuario() {
    var id = 0;
    usuarios.forEach(app => {
       id = id + 1;
@@ -180,36 +139,67 @@ function guardar() {
    });
    $("#modalRegistro").modal("hide");
 }
+function modalInicioSesion(){
+   $("#mensaje").modal("hide");
+   $("#modalInicioSesion").modal("show");
+}
 
-//Obtiene todos los productos y luego los genera
-function obtenerProductos() {
-   var el = document.getElementById('categoriasPrincipales');
-   el.style.display = (el.style.display == 'none');
+
+function inicioSesion(){
+   $("#mensaje").modal("hide");
    axios({
-      method: 'GET',
-      url: '../../amazon/backend/api/todos.php',
-      responseType: 'json'
-   }).then(res => {
-      console.log(res.data);
-      usuarios = res.data;
-      for (let i = 0; i < res.data.length; i++) {
-         document.getElementById('todosProductos').innerHTML +=
-            `<div class="card" style="margin-top: 12px; margin-bottom: 12px; margin-left: 20px; width: 13rem; heigth: 4rem; box-shadow: 8px 10px 28px 0px rgba(148,148,148,1);">
-             <img src="${res.data[i].imagen}" class="card-img-top" alt="...">
+      url:'../../amazon/backend/api/inicio.php',
+      method: 'POST',
+      responseType: "json",
+      data:{
+         correo: document.getElementById('correo-inicio').value ,
+         contrasenia: document.getElementById('contrasena-inicio').value
+      }
+   }).then((res =>{
+      console.log(res);
+      if(res.data.codigoResultado == 1){
+         window.location.href= "index-usuarios.php";
+      }else{
+         document.getElementById('error').style.display = 'block';
+         document.getElementById('error').innerHTML = res.data.mensaje;
+      }
+      console.log(res);
+   })).catch((error =>{
+         console.log(error);
+      }))
+}
+
+function obtenerProductos() {
+   axios({
+      method: "GET",
+      url: "../../amazon/backend/api/todos.php",
+      responseType: "json",
+   })
+      .then((res) => {
+         console.log(res.data);
+         usuarios = res.data;
+         for (let i = 0; i < res.data.length; i++) {
+            document.getElementById("todosProductos").innerHTML +=
+               `<div id="productoVenta" value="${i}" class="card" style="margin-top: 12px; margin-bottom: 12px; margin-left: 20px; width: 13rem; heigth: 4rem; box-shadow: 8px 10px 28px 0px rgba(148,148,148,1);">
+             <img style="height: 188px;"id="imagenC" value="${res.data[i].imagen} "src="${res.data[i].imagen}" class="card-img-top" alt="...">
              <div class="card-body">
-               <h5 class="card-title">${res.data[i].nombreProducto}</h5>
-               <p class="card-text">${res.data[i].descripcion}</p>
-               <h5>${res.data[i].precio}<i style="color: #E6A147; margin-left:12px; font-size: 20px"class="fas fa-cart-plus" type="button"> </i></h5>
-               <a href="#" class="" style="" id="comprar"><button type="button" class="btn btn-warning">Comprar</button></a>
+               <h5 id="nombreC" class="card-title" value="${res.data[i].nombreProducto}">${res.data[i].nombreProducto}</h5>
+               <p id="descripcionC" class="card-text value="${res.data[i].descripcion}">${res.data[i].descripcion}</p>
+               <h5 id="precioC" value="${res.data[i].precio}">Lps. ${res.data[i].precio} <i  id="carrito" onclick="mensaje()"style="color: #E6A147; margin-left:12px; font-size: 20px"class="fas fa-cart-plus" type="button"></i></h5>
+               <button style=" margin-top:16px;" id="comprar" onclick="mensaje()" type="button" class="btn btn-warning">Comprar</button>
              </div>
            </div`;
-      }
-
-   }).catch(error => {
-      console.error(error);
-   });
+         }
+      })
+      .catch((error) => {
+         console.error(error);
+      });
 }
 obtenerProductos();
 
+function mensaje(){
+   $("#mensaje").modal("show");
+      
+}
 
 

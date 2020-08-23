@@ -2,31 +2,28 @@
    
    
    class Todos {
-       private $idCategoria;
-       private $nombreCategoria;       
+       private $idUsuario;
+       private $idCategoria;       
        private $nombreProducto;
        private $precio;
-       private $imagen;
        private $descripcion;
-       private $calificacion;
+       private $imagen;       
+       
 
        function __construct( 
-            $idCategoria
-          , $nombreCategoria      
+            $idUsuario
+          , $idCategoria      
           , $nombreProducto
           , $precio
-          , $imagen
           , $descripcion
-          , $calificacion
-
+          , $imagen
        ){
+       $this->idUsuario = $idUsuario;
        $this->idCategoria = $idCategoria;
-       $this->nombreCategoria = $nombreCategoria;
        $this->nombreProducto = $nombreProducto;
        $this->precio = $precio;
-       $this->imagen = $imagen;
        $this->descripcion = $descripcion;
-       $this->calificacion = $calificacion;
+       $this->imagen = $imagen;n;
 
        }
         
@@ -34,6 +31,43 @@
               $contenido = file_get_contents("../data/todos.json");
               echo $contenido;
         }
+        public function guardarTodo() {
+              $contenido = file_get_contents("../data/todos.json");
+              $venta = json_decode($contenido, true);
+              $venta[] = array(
+                  "idUsuario" => $this->idUsuario,
+                  "idCategoria" => $this->idCategoria,
+                  "nombreProducto" => $this->nombreProducto, 
+                  "precio" => $this->precio,
+                  "descripcion" => $this->descripcion,
+                  "imagen" => $this->imagen,
+              );
+              $archivo = fopen("../data/todos.json", "w");
+              fwrite($archivo, json_encode($venta));
+              fclose($archivo);
+          }
+        
+
+       /**
+        * Get the value of idUsuario
+        */ 
+       public function getIdUsuario()
+       {
+              return $this->idUsuario;
+       }
+
+       /**
+        * Set the value of idUsuario
+        *
+        * @return  self
+        */ 
+       public function setIdUsuario($idUsuario)
+       {
+              $this->idUsuario = $idUsuario;
+
+              return $this;
+       }
+
        /**
         * Get the value of idCategoria
         */ 
@@ -50,26 +84,6 @@
        public function setIdCategoria($idCategoria)
        {
               $this->idCategoria = $idCategoria;
-
-              return $this;
-       }
-
-       /**
-        * Get the value of nombreCategoria
-        */ 
-       public function getNombreCategoria()
-       {
-              return $this->nombreCategoria;
-       }
-
-       /**
-        * Set the value of nombreCategoria
-        *
-        * @return  self
-        */ 
-       public function setNombreCategoria($nombreCategoria)
-       {
-              $this->nombreCategoria = $nombreCategoria;
 
               return $this;
        }
@@ -115,26 +129,6 @@
        }
 
        /**
-        * Get the value of imagen
-        */ 
-       public function getImagen()
-       {
-              return $this->imagen;
-       }
-
-       /**
-        * Set the value of imagen
-        *
-        * @return  self
-        */ 
-       public function setImagen($imagen)
-       {
-              $this->imagen = $imagen;
-
-              return $this;
-       }
-
-       /**
         * Get the value of descripcion
         */ 
        public function getDescripcion()
@@ -155,21 +149,21 @@
        }
 
        /**
-        * Get the value of calificacion
+        * Get the value of imagen
         */ 
-       public function getCalificacion()
+       public function getImagen()
        {
-              return $this->calificacion;
+              return $this->imagen;
        }
 
        /**
-        * Set the value of calificacion
+        * Set the value of imagen
         *
         * @return  self
         */ 
-       public function setCalificacion($calificacion)
+       public function setImagen($imagen)
        {
-              $this->calificacion = $calificacion;
+              $this->imagen = $imagen;
 
               return $this;
        }

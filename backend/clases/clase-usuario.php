@@ -165,9 +165,7 @@
                 "nombre"=> $this->nombre,
                 "apellido"=> $this->apellido,
                 "correo"=> $this->correo,
-                "contrasenia"=> $this->contrasenia                
-                //$this->productoCompra;
-                //$this->ProductoVenta;
+                "contrasenia"=> sha1($this->contrasenia)                
             );
             $archivo = fopen("../data/usuarios.json", "w");
             fwrite($archivo, json_encode($usuario));
@@ -178,12 +176,17 @@
               echo $contenido;
         }
         
-        public function obtenerUsuario($idUsuario){
+    
 
-        }
-
-        public function actualizarUsuario(){
-
+        public static function verificarUsuario($correo, $contrasenia){
+            $contenido = file_get_contents("../data/usuarios.json");
+            $usuarios = json_decode($contenido, true);
+            for($i=0;$i<sizeof($usuarios); $i++){
+                if($usuarios[$i]["correo"] == $correo && $usuarios[$i]["contrasenia"] == sha1($contrasenia)){
+                    return $usuarios[$i];
+                }
+            }
+            return null;
         }
 
      
